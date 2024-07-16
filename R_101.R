@@ -79,8 +79,6 @@ Tiempo2 <- c("tiempo platzi", "tiempo lecturas", "tiempo total")
 colnames(tiempo_matrix2) <- dias2
 rownames(tiempo_matrix2) <- Tiempo2
 
-#final_matrix
-
 final_matrix <-rbind(tiempo_matrix,c(10,15,30,5,0))
 final_matrix
 
@@ -88,28 +86,54 @@ colSums(final_matrix)
 
 final_matrix[1,5]
 
-orangeec[orangeec$GDP.PC>=15000,]
 
+# filtros, (como obtener información del dataset) como saber cuales carros tienen menos de 6 cilindros
+mtcars[mtcars$cyl<6,]
 
+orangeec[orangeec$GDP.PC>15000,]
 
+orangeec[orangeec$Creat.Ind...GDP<=2,]
 
+# otra forma de identificar información en un dataset son los SUBSETTING
 
+neworangeec <- subset(orangeec, Internet.penetration...population >80 & Education.invest...GDP >= 4.5)
 
+neworangeec
 
+# Si queremos ver in fodel data set desde la perspectiva de un atributo
 
+neworangeec <- subset(orangeec, Internet.penetration...population >80 
+                      & Education.invest...GDP >= 4.5,
+                      select = Creat.Ind...GDP)
+neworangeec
 
+#Renonbrar, primero asuegurarse de tener instalado el paquete "plyr"
 
+rename(orangeec,c("Creat.Ind...GDP"="AporteEcNja"))
 
+# Factor
 
+Nivel_Curso <- c("Básico", "Intermedio", "Avamzado")
+Nivel_Curso 
 
+head(mtcars)
+head(orangeec)
 
+tail(mtcars)
+tail(orangeec)
 
+# Con esta función podemos dar un vistazo al dataset
+glimpse(orangeec)
 
+# Lista: como una lista en la asignamos tareas pendientes, este es un supoerobjeto que nos permite almacenar cualquier otro tio de objetos(vectores, matrices, dataframes)
 
-
-
-
-
+my_vector <-1:8
+my_matrix <- matrix(1:9, ncol=3)
+my_matrix
+my_df <- mtcars[1:4,]
+my_df
+my_list <- list(my_vector, my_matrix, my_df)
+my_list
 
 
 
